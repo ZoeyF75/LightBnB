@@ -8,7 +8,7 @@ VALUES (3, 'Janis Joplin', 'Bobby.McGee@hotmail.com', '$2a$10$FB/BOAVhpuLvpOREQV
 INSERT INTO properties 
 VALUES (1, 1, 'My name Jeff', 'description', 'https://i.dailymail.co.uk/i/pix/2012/02/01/article-2094738-118A758B000005DC-950_634x436.jpg', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCoQhIYt1y5ZfIXEJlgnKEZiynGTUvBC1lKQ&usqp=CAU', 200, 2, 2, 2, 'Canada', '21 Jump Street', 'Regina', 'Saskatchewan', 'S5X 1N9', true);
 INSERT INTO properties 
-VALUES (2, 2, 'My Achy Breaky House', 'description', 'https://i.dailymail.co.uk/i/pix/2012/02/01/article-2094738-118A758B000005DC-950_634x436.jpg', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCoQhIYt1y5ZfIXEJlgnKEZiynGTUvBC1lKQ&usqp=CAU', 500, 3, 3, 4, 'Canada', 'Cowboy ave', 'MooseJaw', 'Saskatchewan', 'S8P 2Q8', true);
+VALUES (2, 2, 'Meow Meow', 'description', 'https://i.dailymail.co.uk/i/pix/2012/02/01/article-2094738-118A758B000005DC-950_634x436.jpg', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCoQhIYt1y5ZfIXEJlgnKEZiynGTUvBC1lKQ&usqp=CAU', 500, 3, 3, 4, 'Canada', 'Cowboy ave', 'MooseJaw', 'Saskatchewan', 'S8P 2Q8', true);
 INSERT INTO properties 
 VALUES (3, 1, 'My name Jeff Premium', 'description', 'https://i.dailymail.co.uk/i/pix/2012/02/01/article-2094738-118A758B000005DC-950_634x436.jpg', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCoQhIYt1y5ZfIXEJlgnKEZiynGTUvBC1lKQ&usqp=CAU', 2000, 10, 10, 10, 'Canada', '22 Jump Street', 'Regina', 'Saskatchewan', 'S6Z 2M0', true); 
 
