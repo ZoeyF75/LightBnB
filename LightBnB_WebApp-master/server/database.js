@@ -1,5 +1,3 @@
-const properties = require('./json/properties.json');
-const users = require('./json/users.json');
 const { Pool } = require('pg');
 const pool = new Pool({
   user: 'vagrant',
@@ -8,9 +6,9 @@ const pool = new Pool({
   database: 'lightbnb'
 });
 
-pool.connect()
+pool.connect();
 
-/// Users
+// Users
 
 /**
  * Get a single user from the database given their email.
@@ -39,9 +37,8 @@ const getUserWithId = function(id) {
   [id])
     .then(res => res.rows.length ? res.rows[0] : null)
     .catch(err => err.stack);
-}
+};
 exports.getUserWithId = getUserWithId;
-
 
 /**
  * Add a new user to the database.
@@ -57,7 +54,7 @@ const addUser =  function(user) {
   `, userVals)
     .then(res => res.rows[0])
     .catch(err => err.stack);
-}
+};
 exports.addUser = addUser;
 
 /// Reservations
@@ -81,8 +78,8 @@ const getAllReservations = function(guest_id, limit = 10) {
   LIMIT $2;
   `, inputs)
     .then(res => res.rows)
-    .catch(err => err.stack)
-}
+    .catch(err => err.stack);
+};
 exports.getAllReservations = getAllReservations;
 
 /// Properties
@@ -109,19 +106,19 @@ const getAllProperties = function(options, limit = 10) {
   }
   if (options.owner_id) {
     queryParams.push(parseInt(options.owner_id));
-    queryString += `${queryParams.length === 1 ? 'WHERE' : ' AND'} owner_id = $${queryParams.length} `;
+    queryString += `${queryParams.length === 1 ? 'WHERE' : 'AND'} owner_id = $${queryParams.length} `;
   }
   if (options.minimum_price_per_night) {
     queryParams.push(parseInt(options.minimum_price_per_night * 100));
-    queryString += `${queryParams.length === 1 ? 'WHERE' : 'AND'} cost_per_night >= $${queryParams.length}`;  
+    queryString += `${queryParams.length === 1 ? 'WHERE' : 'AND'} cost_per_night >= $${queryParams.length} `;
   }
   if (options.maximum_price_per_night) {
     queryParams.push(parseInt(options.maximum_price_per_night * 100));
-    queryString += `${queryParams.length === 1 ? 'WHERE' : ' AND'} cost_per_night <= $${queryParams.length}`;  
+    queryString += `${queryParams.length === 1 ? 'WHERE' : 'AND'} cost_per_night <= $${queryParams.length} `;
   }
   if (options.minimum_rating) {
     queryParams.push(options.minimum_rating);
-    queryString += `${queryParams.length === 1 ? 'WHERE' : ' AND'} property_reviews.rating >= $${queryParams.length} `
+    queryString += `${queryParams.length === 1 ? 'WHERE' : 'AND'} property_reviews.rating >= $${queryParams.length} `;
   }
 
   queryParams.push(limit);
@@ -147,21 +144,21 @@ exports.getAllProperties = getAllProperties;
  */
 const addProperty = function(property) {
   const propVals = [
-  property.owner_id,
-  property.title,
-  property.description,
-  property.thumbnail_photo_url,
-  property.cover_photo_url,
-  property.cost_per_night,
-  property.street,
-  property.city,
-  property.province,
-  property.post_code,
-  property.country,
-  property.parking_spaces,
-  property.number_of_bathrooms,
-  property.number_of_bedrooms
-  ]
+    property.owner_id,
+    property.title,
+    property.description,
+    property.thumbnail_photo_url,
+    property.cover_photo_url,
+    property.cost_per_night,
+    property.street,
+    property.city,
+    property.province,
+    property.post_code,
+    property.country,
+    property.parking_spaces,
+    property.number_of_bathrooms,
+    property.number_of_bedrooms
+  ];
   return pool.query(`
   INSERT INTO properties (
     owner_id,
@@ -179,10 +176,10 @@ const addProperty = function(property) {
     number_of_bathrooms,
     number_of_bedrooms
     )
-  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, ${parseInt('$12')}, ${parseInt('$13')}, ${parseInt('$14')})
+  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
   RETURNING *;
   `, propVals)
     .then(res => res.rows, console.log(property))
     .catch(err => err.stack);
-}
+};
 exports.addProperty = addProperty;
